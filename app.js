@@ -39,26 +39,23 @@ function sortearAmigo() {
     let sorteio = [...nomesArray];
     let resultado = [];
 
-    // Mistura aleatoriamente os nomes da lista
     sorteio.sort(() => Math.random() - 0.5);
 
-    // Verifica se o sorteio é inválido e tenta novamente
     while (verificarSorteioInvalido(sorteio)) {
         sorteio.sort(() => Math.random() - 0.5);
     }
 
-    // Exibe o resultado do sorteio
     let resultadoU1 = document.getElementById("resultado");
     resultadoU1.innerHTML = "";
+    
     nomesArray.forEach((nome, index) => {
         let li = document.createElement("li");
-        li.textContent = `$(nome) tirou ${sorteio[index]}`;
+        li.textContent = `${nome} tirou ${sorteio[index]}`;
         resultadoU1.appendChild(li);
     });
 }
 
 function verificarSorteioInvalido(listaSorteada) {
-    // Verifica se algum nome sorteado é o mesmo da posição original
     return nomesArray.some((nome, index) => nome === listaSorteada[index]);
 }
             
